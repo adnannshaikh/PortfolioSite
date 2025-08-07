@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -11,10 +12,16 @@ function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Form submitted (but not yet sent to backend).');
-    console.log(formData);
+    try {
+      const response = await axios.post('http://localhost:8000/contact', formData);
+      alert(response.data.message || "Message sent!");
+      setFormData({ name: '', email: '', message: '' }); // reset
+    } catch (error) {
+      alert("Failed to send message.");
+      console.error(error);
+    }
   };
 
   return (
