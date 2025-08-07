@@ -4,20 +4,13 @@ import Home from './pages/Home';
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
 
     <Router>
-      <nav>
-        <ul style={{ display: 'flex', gap: '20px', listStyle: 'none' }}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/blog">Blog</Link></li>
-        </ul>
-        <hr />
-      </nav>
+      <Navbar/>
     {/* // <div className="App">
     // <h1>Welcome To Adnan's Portfolio</h1>
     // </div> */}
